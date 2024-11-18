@@ -1,4 +1,4 @@
-using MediatR;
+// using MediatR;
 
 public class GetBookQueryHandler : IRequestHandler<GetBookQuery, IEnumerable<Book>>{
     public GetBookQueryHandler(IBookRepository _repository) {
@@ -7,7 +7,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, IEnumerable<Boo
 
     public IBookRepository _repository;
 
-    public async Task<IEnumerable<Book>> Handle(GetBookQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Book>> Handle(GetBookQuery request)
     {
         
         var allBooks = _repository.GetAll();

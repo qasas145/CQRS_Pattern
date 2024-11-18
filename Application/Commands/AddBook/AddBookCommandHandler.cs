@@ -1,4 +1,4 @@
-using MediatR;
+// using MediatR;
 
 public class AddBookCommandHandler :IRequestHandler<AddBookCommand, Guid>{
 
@@ -9,11 +9,14 @@ public class AddBookCommandHandler :IRequestHandler<AddBookCommand, Guid>{
 
     private readonly IBookRepository _repo;
 
-    public async Task<Guid> Handle(AddBookCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(AddBookCommand request)
     {
         
         var book = new Book(){Id = request.Id,Name = request.Name, Category = request.Category, PublishedAt = DateTime.Now};
+
         _repo.AddBook(book);
+
         return book.Id;
+
     }
 }
